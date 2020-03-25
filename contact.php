@@ -10,8 +10,10 @@
 
     <?php
         if(isset($_POST) && isset($_POST['submit'])){
-            if(empty($_POST['user_name'])){
-                $error['user_name'] = "Le nom et prénom sont obligatoires";
+            if(empty($_POST['user_lastname'])){
+                $error['user_lastname'] = "Le nom est obligatoire";
+            }if(empty($_POST['user_firstname'])){
+                $error['user_firstname'] = "Le prénom est obligatoire";
             }if(empty($_POST['user_email'])){
                 $error['user_email'] = "L'email est obligatoire";
             }if(empty($_POST['user_number'])){
@@ -20,9 +22,10 @@
                 $error['user_subject'] = "Veuillez choisir un sujet";
             }if(empty($_POST['user_message'])){
                 $error['user_message'] = "Le message est obligatoire";
-            }if(!empty($_POST['user_name']) && !empty($_POST['user_email']) && !empty($_POST['user_number']) && !empty($_POST['user_subject']) && !empty($_POST['user_message'])){
+            }if(!empty($_POST['user_lastname']) && !empty($_POST['user_email']) && !empty($_POST['user_number']) && !empty($_POST['user_subject']) && !empty($_POST['user_message']) && !empty($_POST['user_firstname'])){
                 if(filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)){
-                    $_SESSION['user_name'] = $_POST['user_name'];
+                    $_SESSION['user_lastname'] = $_POST['user_lastname'];
+                    $_SESSION['user_firstname'] = $_POST['user_firstname'];
                     $_SESSION['user_email'] = $_POST['user_email'];
                     $_SESSION['user_number'] = $_POST['user_number'];
                     $_SESSION['user_subject'] = $_POST['user_subject'];
@@ -38,8 +41,13 @@
     <form  method="POST">
         <div>
             <label  for="nom">Nom :</label>
-            <input  type="text"  id="nom"  name="user_name">
-            <p style="color: red"><?php if(isset($error['user_name'])) echo $error['user_name'];?></p>
+            <input  type="text"  id="nom"  name="user_lastname">
+            <p style="color: red"><?php if(isset($error['user_lastname'])) echo $error['user_lastname'];?></p>
+        </div>
+        <div>
+            <label  for="nom">Prénom :</label>
+            <input  type="text"  id="prenom"  name="user_firstname">
+            <p style="color: red"><?php if(isset($error['user_firstname'])) echo $error['user_firstname'];?></p>
         </div>
         <div>
             <label  for="courriel">Courriel :</label>
