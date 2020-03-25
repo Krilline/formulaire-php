@@ -9,7 +9,11 @@
     <form  method="POST" action="thanks.php">
         <div>
             <label  for="nom">Nom :</label>
-            <input  type="text"  id="nom"  name="user_name" required>
+            <input  type="text"  id="nom"  name="user_lastname" required>
+        </div>
+        <div>
+            <label  for="prenom">Prénom :</label>
+            <input  type="text"  id="prenom"  name="user_firstname" required>
         </div>
         <div>
             <label  for="courriel">Courriel :</label>
